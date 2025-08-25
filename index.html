@@ -142,27 +142,24 @@
       if (e.key === "Enter") send();
     });
 
-    // ✅ 修正：偵測視窗高度，調整 chat 區域高度
+    // ✅ 修正：使用 visualViewport，解決 iOS 鍵盤壓縮問題
     const chatBox = document.getElementById("chat");
     const footer = document.querySelector("footer");
 
     function adjustLayout() {
-      const vh = window.innerHeight;
+      const vh = window.visualViewport ? window.visualViewport.height : window.innerHeight;
+      const headerHeight = document.querySelector("header").offsetHeight;
+      const noticeHeight = document.getElementById("notice").offsetHeight;
       const footerHeight = footer.offsetHeight;
-      chatBox.style.height = (vh - footerHeight - 90) + "px"; // 90≈header+公告
+
+      chatBox.style.height = (vh - headerHeight - noticeHeight - footerHeight) + "px";
     }
 
     window.addEventListener("resize", adjustLayout);
+    if (window.visualViewport) {
+      window.visualViewport.addEventListener("resize", adjustLayout);
+    }
     window.addEventListener("load", adjustLayout);
-    adjustLayout();
-
-    // ✅ 手機輸入時，讓輸入框可見
-    const inputBox = document.getElementById("input");
-    inputBox.addEventListener("focus", () => {
-      setTimeout(() => {
-        inputBox.scrollIntoView({ behavior: "smooth", block: "center" });
-      }, 300);
-    });
   </script>
 </body>
 </html>
