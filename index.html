@@ -97,7 +97,7 @@
   </style>
 </head>
 <body>
-  <header>聊天室機器人</header>
+  <header>我是えななん</header>
   <div id="chat"></div>
   <footer>
     <input type="text" id="input" placeholder="輸入訊息..." />
@@ -113,10 +113,10 @@
 
       addMessage("你: " + msg, "user");
 
-      let reply = "我聽不懂你說什麼 🤔";
-      if (msg.includes("你好")) reply = "你好，很高興認識你！";
-      else if (msg.includes("時間")) reply = "現在時間是 " + new Date().toLocaleTimeString();
-      else if (msg.includes("再見")) reply = "再見，希望很快再聊！";
+      let reply = "喵?(*我聽不懂你說什麼 🤔");
+      if (msg.includes("えななん")) reply = "喵！(*你竟然知道本公主的名字)";
+      else if (msg.includes("まふゆ")) reply = "喵嗷!(*不可以喊我馬麻)";
+      else if (msg.includes("絵名")) reply = "喵...(*霸佔我馬麻的臭貓)";
 
       setTimeout(() => addMessage("機器人: " + reply, "bot"), 600);
 
@@ -139,3 +139,4 @@
   </script>
 </body>
 </html>
+
