@@ -11,7 +11,8 @@
       margin: 0;
       display: flex;
       flex-direction: column;
-      min-height: 100vh; /* ✅ 用 min-height 避免手機鍵盤壓縮 */
+      height: 100vh;
+      overflow: hidden; /* ✅ 避免整體滾動 */
     }
     header {
       background: #06c755;
@@ -21,7 +22,6 @@
       font-size: 18px;
       font-weight: bold;
     }
-    /* 公告區 */
     #notice {
       background: #fff8c6;
       color: #333;
@@ -57,71 +57,52 @@
     }
     footer {
       display: flex;
-      padding: 10px;
+      padding: 8px;
       background: #f0f0f0;
-      position: sticky;   /* ✅ 永遠貼在底部 */
+      position: fixed;   /* ✅ 永遠貼在螢幕底部 */
       bottom: 0;
+      left: 0;
+      right: 0;
+      box-sizing: border-box;
     }
     #input {
       flex: 1;
-      padding: 12px;
+      padding: 10px;
       border-radius: 20px;
       border: 1px solid #ccc;
       outline: none;
       font-size: 16px;
+      min-width: 0; /* ✅ 防止輸入框太長把按鈕擠掉 */
     }
     button {
       background: #06c755;
       color: white;
       border: none;
       border-radius: 50%;
-      width: 42px;
-      height: 42px;
-      margin-left: 8px;
+      width: 40px;
+      height: 40px;
+      margin-left: 6px;
       cursor: pointer;
       font-size: 18px;
+      flex-shrink: 0; /* ✅ 按鈕不被擠壓 */
     }
 
-    /* 🔹 響應式設計：小螢幕最佳化 */
     @media (max-width: 600px) {
-      header {
-        font-size: 16px;
-        padding: 10px;
-      }
-      #notice {
-        font-size: 13px;
-        padding: 6px;
-      }
-      #chat {
-        padding: 8px;
-      }
-      .msg {
-        max-width: 90%;
-        font-size: 15px;
-      }
-      #input {
-        font-size: 14px;
-        padding: 10px;
-      }
-      button {
-        width: 38px;
-        height: 38px;
-        font-size: 16px;
-      }
+      .msg { max-width: 90%; font-size: 15px; }
+      #input { font-size: 14px; padding: 8px; }
+      button { width: 36px; height: 36px; font-size: 16px; }
     }
   </style>
 </head>
 <body>
   <header>陌生的貓咪</header>
-
-  <!-- 公告區 -->
   <div id="notice">
     📢 公告：歡迎來到聊天室！輸入密語從貓咪身上獲得密碼吧 🐾<br>
     1.日常番外-兩人飼養的貓咪名字是?(日文)<br>
     2.戒指番外-
   </div>
-
   <div id="chat"></div>
+
   <footer>
     <input type="text" id="input" placeholder="輸入訊息..." />
     <button onclick="send()">➤</button>
@@ -161,7 +142,21 @@
       if (e.key === "Enter") send();
     });
 
-    // ✅ 補丁：手機輸入時，自動滾到輸入框
+    // ✅ 修正：偵測視窗高度，調整 chat 區域高度
+    const chatBox = document.getElementById("chat");
+    const footer = document.querySelector("footer");
+
+    function adjustLayout() {
+      const vh = window.innerHeight;
+      const footerHeight = footer.offsetHeight;
+      chatBox.style.height = (vh - footerHeight - 90) + "px"; // 90≈header+公告
+    }
+
+    window.addEventListener("resize", adjustLayout);
+    window.addEventListener("load", adjustLayout);
+    adjustLayout();
+
+    // ✅ 手機輸入時，讓輸入框可見
     const inputBox = document.getElementById("input");
     inputBox.addEventListener("focus", () => {
       setTimeout(() => {
