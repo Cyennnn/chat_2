@@ -97,7 +97,7 @@
   </style>
 </head>
 <body>
-  <header>我是えななん</header>
+  <header>陌生的貓咪</header>
   <div id="chat"></div>
   <footer>
     <input type="text" id="input" placeholder="輸入訊息..." />
@@ -114,11 +114,11 @@
       addMessage("你: " + msg, "user");
 
       let reply = "喵?(*我聽不懂你說什麼 🤔)";
-      if (msg.includes("えななん")) reply = "喵！(*你竟然知道本公主的名字)";
+      if (msg.includes("えななん")) reply = "喵！(*えななん身上掉落了紙條，上面寫著:127430)";
       else if (msg.includes("まふゆ")) reply = "喵嗷!(*不可以喊我馬麻)";
       else if (msg.includes("絵名")) reply = "喵...(*霸佔我馬麻的臭貓)";
 
-      setTimeout(() => addMessage("機器人: " + reply, "bot"), 600);
+      setTimeout(() => addMessage("貓咪: " + reply, "bot"), 600);
 
       input.value = "";
       chat.scrollTop = chat.scrollHeight;
@@ -139,5 +139,6 @@
   </script>
 </body>
 </html>
+
 
 
