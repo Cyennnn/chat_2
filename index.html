@@ -11,7 +11,7 @@
       margin: 0;
       display: flex;
       flex-direction: column;
-      height: 100vh;
+      min-height: 100vh; /* ✅ 用 min-height 避免手機鍵盤壓縮 */
     }
     header {
       background: #06c755;
@@ -59,6 +59,8 @@
       display: flex;
       padding: 10px;
       background: #f0f0f0;
+      position: sticky;   /* ✅ 永遠貼在底部 */
+      bottom: 0;
     }
     #input {
       flex: 1;
@@ -158,9 +160,14 @@
     document.getElementById("input").addEventListener("keypress", function(e) {
       if (e.key === "Enter") send();
     });
+
+    // ✅ 補丁：手機輸入時，自動滾到輸入框
+    const inputBox = document.getElementById("input");
+    inputBox.addEventListener("focus", () => {
+      setTimeout(() => {
+        inputBox.scrollIntoView({ behavior: "smooth", block: "center" });
+      }, 300);
+    });
   </script>
 </body>
 </html>
-
-
-
