@@ -11,11 +11,10 @@
       display: flex;
       flex-direction: column;
       height: 100vh;
-      background: url("https://www.transparenttextures.com/patterns/cubes.png");
-      background-color: #e5ddd5;
+      background: #f7f6f4; /* 背景色改淡米白，襯托泡泡 */
     }
     header {
-      background: #06c755;
+      background: #8888cc; /* 主色 */
       color: white;
       padding: 14px;
       text-align: center;
@@ -24,11 +23,11 @@
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
     #notice {
-      background: #fff8c6;
-      color: #333;
+      background: #ccaa88; /* 副色 */
+      color: #fff;
       padding: 8px 12px;
       font-size: 14px;
-      border-bottom: 1px solid #ddd;
+      border-bottom: 1px solid #b89c76;
       text-align: center;
     }
     #chat {
@@ -48,37 +47,38 @@
       word-wrap: break-word;
       box-shadow: 0 1px 3px rgba(0,0,0,0.1);
       margin: 6px 0;
+      color: #fff;
     }
     .user {
       align-self: flex-end;
-      background: #dcf8c6;
+      background: #8888cc; /* 使用者泡泡：紫藍 */
       border-bottom-right-radius: 4px;
     }
     .bot {
       align-self: flex-start;
-      background: #fff;
+      background: #ccaa88; /* 貓咪泡泡：米咖 */
       border-bottom-left-radius: 4px;
     }
 
     footer {
       display: flex;
       padding: 8px;
-      background: #f0f0f0;
+      background: #eee;
       box-sizing: border-box;
       flex-shrink: 0;
-      border-top: 1px solid #ddd;
+      border-top: 1px solid #ccc;
     }
     #input {
       flex: 1;
       padding: 10px;
       border-radius: 20px;
-      border: 1px solid #ccc;
+      border: 1px solid #bbb;
       outline: none;
       font-size: 16px;
       min-width: 0;
     }
     button {
-      background: #06c755;
+      background: #8888cc; /* 按鈕改成主色 */
       color: white;
       border: none;
       border-radius: 50%;
