@@ -49,16 +49,6 @@
       justify-content: flex-end;
     }
 
-    /* ---- 頭像 ---- */
-    .avatar {
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      margin: 0 6px;
-      object-fit: cover;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.2);
-    }
-
     /* ---- 對話泡泡 ---- */
     .msg {
       max-width: 70%;
@@ -165,12 +155,6 @@
       const row = document.createElement("div");
       row.className = "message-row " + type;
 
-      const avatar = document.createElement("img");
-      avatar.className = "avatar";
-      avatar.src = type === "user" 
-        ? "https://i.pravatar.cc/36?img=3"   // 使用者頭像
-        : "https://i.pravatar.cc/36?img=12"; // 貓咪頭像
-
       const bubble = document.createElement("div");
       bubble.className = "msg " + type;
       bubble.textContent = text;
@@ -193,3 +177,4 @@
   </script>
 </body>
 </html>
+
