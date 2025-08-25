@@ -21,6 +21,15 @@
       font-size: 18px;
       font-weight: bold;
     }
+    /* 公告區 */
+    #notice {
+      background: #fff8c6;
+      color: #333;
+      padding: 8px 12px;
+      font-size: 14px;
+      border-bottom: 1px solid #ddd;
+      text-align: center;
+    }
     #chat {
       flex: 1;
       padding: 10px;
@@ -77,11 +86,15 @@
         font-size: 16px;
         padding: 10px;
       }
+      #notice {
+        font-size: 13px;
+        padding: 6px;
+      }
       #chat {
         padding: 8px;
       }
       .msg {
-        max-width: 90%; /* 小螢幕訊息泡泡更寬 */
+        max-width: 90%;
         font-size: 15px;
       }
       #input {
@@ -98,6 +111,14 @@
 </head>
 <body>
   <header>陌生的貓咪</header>
+
+  <!-- 公告區 -->
+  <div id="notice">
+    📢 公告：歡迎來到聊天室！輸入密語從貓咪身上獲得密碼吧 🐾
+    1.日常番外-兩人飼養的貓咪名字是?(日文)
+    2.戒指番外-
+  </div>
+
   <div id="chat"></div>
   <footer>
     <input type="text" id="input" placeholder="輸入訊息..." />
@@ -139,7 +160,3 @@
   </script>
 </body>
 </html>
-
-
-
-
