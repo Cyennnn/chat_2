@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>聊天室</title>
+  <title>聊天室1.0</title>
   <style>
     body {
       font-family: "Segoe UI", Arial, sans-serif;
@@ -11,8 +11,7 @@
       margin: 0;
       display: flex;
       flex-direction: column;
-      height: calc(var(--vh, 1vh) * 100); /* ✅ 使用動態 vh */
-      overflow: hidden;
+      height: 100vh;   /* 用 flex 控制全高度 */
     }
     header {
       background: #06c755;
@@ -31,7 +30,7 @@
       text-align: center;
     }
     #chat {
-      flex: 1;
+      flex: 1;                  /* 自動填滿剩餘空間 */
       padding: 10px;
       overflow-y: auto;
       display: flex;
@@ -59,11 +58,8 @@
       display: flex;
       padding: 8px;
       background: #f0f0f0;
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
       box-sizing: border-box;
+      flex-shrink: 0;           /* 保持高度，不會被壓縮 */
     }
     #input {
       flex: 1;
@@ -72,7 +68,7 @@
       border: 1px solid #ccc;
       outline: none;
       font-size: 16px;
-      min-width: 0;
+      min-width: 0;             /* 防止輸入框過長 */
     }
     button {
       background: #06c755;
@@ -95,26 +91,24 @@
 </head>
 <body>
   <header>陌生的貓咪</header>
+
+  <!-- 公告 -->
   <div id="notice">
     📢 公告：歡迎來到聊天室！輸入密語從貓咪身上獲得密碼吧 🐾<br>
-    1.日常番外-兩人飼養的貓咪名字是?(日文)<br>
-    2.戒指番外-
+    1.日常番外 - 兩人飼養的貓咪名字是?(日文)<br>
+    2.戒指番外 - ...
   </div>
+
+  <!-- 聊天區 -->
   <div id="chat"></div>
 
+  <!-- 底部輸入 -->
   <footer>
     <input type="text" id="input" placeholder="輸入訊息..." />
     <button onclick="send()">➤</button>
   </footer>
 
   <script>
-    // ✅ 修正 iOS Safari vh 問題
-    function setVh() {
-      document.documentElement.style.setProperty('--vh', (window.innerHeight * 0.01) + 'px');
-    }
-    window.addEventListener('resize', setVh);
-    window.addEventListener('load', setVh);
-
     function send() {
       const chat = document.getElementById("chat");
       const input = document.getElementById("input");
@@ -144,6 +138,7 @@
       chat.scrollTop = chat.scrollHeight;
     }
 
+    // Enter 也能送出
     document.getElementById("input").addEventListener("keypress", function(e) {
       if (e.key === "Enter") send();
     });
