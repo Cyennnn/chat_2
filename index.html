@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>聊天室2.0</title>
+  <title>聊天室</title>
   <style>
     body {
       font-family: "Segoe UI", Arial, sans-serif;
@@ -11,7 +11,7 @@
       display: flex;
       flex-direction: column;
       height: 100vh;
-      background: url("https://www.transparenttextures.com/patterns/cubes.png"); /* 🔹淡淡背景 */
+      background: url("https://www.transparenttextures.com/patterns/cubes.png");
       background-color: #e5ddd5;
     }
     header {
@@ -39,16 +39,6 @@
       flex-direction: column;
     }
 
-    /* ---- 訊息容器 ---- */
-    .message-row {
-      display: flex;
-      align-items: flex-end;
-      margin: 8px 0;
-    }
-    .message-row.user {
-      justify-content: flex-end;
-    }
-
     /* ---- 對話泡泡 ---- */
     .msg {
       max-width: 70%;
@@ -57,12 +47,15 @@
       line-height: 1.4;
       word-wrap: break-word;
       box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      margin: 6px 0;
     }
-    .msg.user {
+    .user {
+      align-self: flex-end;
       background: #dcf8c6;
       border-bottom-right-radius: 4px;
     }
-    .msg.bot {
+    .bot {
+      align-self: flex-start;
       background: #fff;
       border-bottom-left-radius: 4px;
     }
@@ -135,7 +128,7 @@
       const msg = input.value.trim();
       if (!msg) return;
 
-      addMessage(msg, "user");
+      addMessage("你: " + msg, "user");
 
       let reply = "喵?(*我只是隻小貓咪，聽不懂人類的話 🤔)";
       if (msg.includes("えななん")) reply = "喵！(*えななん認可了你，將紙條放到你的面前，上面寫著:127430)";
@@ -151,23 +144,10 @@
 
     function addMessage(text, type) {
       const chat = document.getElementById("chat");
-
-      const row = document.createElement("div");
-      row.className = "message-row " + type;
-
-      const bubble = document.createElement("div");
-      bubble.className = "msg " + type;
-      bubble.textContent = text;
-
-      if (type === "user") {
-        row.appendChild(bubble);
-        row.appendChild(avatar);
-      } else {
-        row.appendChild(avatar);
-        row.appendChild(bubble);
-      }
-
-      chat.appendChild(row);
+      const div = document.createElement("div");
+      div.className = "msg " + type;
+      div.textContent = text;
+      chat.appendChild(div);
       chat.scrollTop = chat.scrollHeight;
     }
 
@@ -177,4 +157,3 @@
   </script>
 </body>
 </html>
-
