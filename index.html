@@ -126,8 +126,9 @@
   <div id="notice">
     📢 公告：歡迎來到聊天室！<br>
     輸入密語從貓咪身上獲得密碼吧 🐾<br>
+    提示：兩題分開作答不需打上題號，人名不需加上姓氏
     1.日常番外 - 兩人飼養的貓咪名字是?(日文)<br>
-    2.戒指番外 - ...
+    2.戒指番外 - まふゆ最喜歡的人是？（日文）
   </div>
 
   <!-- 聊天區 -->
@@ -149,9 +150,9 @@
       addMessage("你: " + msg, "user");
 
       let reply = "喵?(*我只是隻小貓咪，聽不懂人類的話 🤔)";
-      if (msg.includes("えななん")) reply = "喵！(*えななん認可了你，將紙條放到你的面前，上面寫著:127430)";
+      if (msg.includes("えななん")) reply = "喵！(*えななん認可了你，將紙條放到你的面前，上面寫著：Lily)";
       else if (msg.includes("まふゆ")) reply = "喵嗷!(*喜歡!媽媽!)";
-      else if (msg.includes("絵名")) reply = "喵...(*偷偷說，其實我很喜歡她)";
+      else if (msg.includes("絵名")) reply = "喵...(*媽媽最喜歡的是我！在一陣打鬧下，紙條從貓的身上落下，上面寫著：Ivy)";
       else if (msg.includes("あいり")) reply = "喵~(*她說我是最可愛的小貓咪~)";
 
       setTimeout(() => addMessage("貓咪: " + reply, "bot"), 600);
@@ -182,5 +183,6 @@
   </script>
 </body>
 </html>
+
 
 
